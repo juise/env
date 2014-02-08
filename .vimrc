@@ -199,9 +199,9 @@ set backup
 set backupdir=~/.vim/backup
 
 " Clear trailing whitespaces
-nmap <Leader>. :call ClearTrailingWhitespace()<CR>
+nmap <Leader> :%s/\s\+$//e<CR>
 " Clear ^M from dos fileformat and replace with \r
-nmap <Leader>m :%s/\r\(\n\)/\1/g<CR>
+nmap <Leader>m :%s/\r\(\n\)/\1/e<CR>
 
 " }}}
 
@@ -213,21 +213,18 @@ nmap <c-t> :tabnew<cr>
 vmap <c-t> <esc>:tabnew<cr>i
 imap <c-t> <esc>:tabnew<cr>i
 
+
 " }}}
 
 " Commands: {{{
 
 " Write file using sudo
-cmap ws w !sudo cat > %<CR>
+cmap ws w !sudo tee > /dev/null %<CR>
 
 " }}}
 
 
 " Functions: {{{
-
-function! ClearTrailingWhitespace()
-	%s/\s\+$//
-endfunction
 
 function AutoComplete()
 	let col = col('.') - 1
@@ -274,9 +271,11 @@ let NERDTreeIgnore=['\.pyc$', '\.beam$']
 
 autocmd FileType erlang set omnifunc=erlangcomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 
 imap <tab> <c-r>=AutoComplete()<cr>
 
