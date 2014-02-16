@@ -99,6 +99,9 @@ endif
 colorscheme default
 colorscheme xoria256
 
+" Hightlight info lines
+hi info ctermbg=67 guibg=67
+
 " Highlight line under cursor
 set cursorline
 
@@ -130,6 +133,11 @@ set ruler
 " Show commands (or size of selection in Visual mode)
 set showcmd
 
+" Briefly jump to matching bracket
+set showmatch
+" Tenths of a second to show matching bracket
+set matchtime=5
+
 " Show line numbers and set width of number zone to 4 symbols
 set numberwidth=4
 set number
@@ -150,7 +158,7 @@ set splitbelow splitright
 
 " Customization status line
 "set laststatus=2
-"set statusline=\ %f\ %{&enc}/%{&ff}%=%2c\ %2l/%L\ %2p%%\ 
+"set statusline=\ %f\ %{&enc}/%{&ff}%=%2c\ %2l/%L\ %2p%%\
 "hi statusline ctermfg=244 ctermbg=234
 
 "autocmd InsertEnter * :set laststatus=1
@@ -202,6 +210,9 @@ set backupdir=~/.vim/backup
 nmap <Leader> :%s/\s\+$//e<CR>
 " Clear ^M from dos fileformat and replace with \r
 nmap <Leader>m :%s/\r\(\n\)/\1/e<CR>
+" Highlight current line
+"nmap <Leader>h ml:execute 'match info /\%'.line('.').'l/'<CR>
+nmap <Leader>h :exe "let m = matchadd('WildMenu','\\%" . line('.') . "l')"<CR>
 
 " }}}
 
