@@ -1,0 +1,9 @@
+[user]
+    name = Alexander Petrovsky
+    email = askjuise@gmail.com
+[alias]
+    ci = commit
+    br = branch
+    co = checkout
+    st = status
+    lg = log --pretty=format:\"%h %ad | %s%d [%an]\" --date=short
