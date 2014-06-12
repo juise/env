@@ -98,6 +98,10 @@ endif
 " Colorscheme
 colorscheme default
 colorscheme xoria256
+colorscheme solarized
+
+let g:solarized_termcolors=256
+set background=light
 
 " Hightlight info lines
 hi info ctermbg=67 guibg=67

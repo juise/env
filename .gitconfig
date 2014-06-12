@@ -7,3 +7,5 @@
     co = checkout
     st = status
     lg = log --pretty=format:\"%h %ad | %s%d [%an]\" --date=short
+[color]
+    ui = auto
